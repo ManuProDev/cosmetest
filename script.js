@@ -6,10 +6,16 @@ const year = document.querySelector("#year");
 
 if (year) year.textContent = new Date().getFullYear();
 
-menu?.addEventListener("click", () => {
-  const open = nav.classList.toggle("open");
-  menu.setAttribute("aria-expanded", String(open));
-});
+if (!menu) {
+  console.warn("Cosmetest: bouton .hamburger introuvable dans le DOM.");
+} else if (!nav) {
+  console.warn("Cosmetest: menu .nav-links introuvable dans le DOM.");
+} else {
+  menu.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    menu.setAttribute("aria-expanded", String(open));
+  });
+}
 
 document.querySelectorAll(".nav-links a").forEach((a) => {
   a.addEventListener("click", () => {
